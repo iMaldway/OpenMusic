@@ -1,0 +1,71 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"transparentTitle": "always"
+			}
+		},
+		{
+			"path": "components/OpenFile/OpenFile",
+			"style": {
+				"navigationBarTitleText": "选择文件夹",
+				"app-plus": {
+					"bounce": "none", //关闭窗口回弹效果
+					"titleNView": {
+						"buttons": [ //原生标题栏按钮配置,
+							{
+								"text": "确定", //原生标题栏增加分享按钮，点击事件可通过页面的 onNavigationBarButtonTap 函数进行监听
+								"fontSize": "0.8rem",
+								"color": "#666",
+								"width": "60px"
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/musicList/musicList",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/timing/timing",
+			"style": {
+				"navigationBarTitleText": "定时播放"
+			}
+		},
+		{
+			"path": "pages/musicDetails/musicDetails",
+			"style": {
+				"navigationBarTitleText": "",
+				"background": "#FFFFFF",
+				"bounce": "none",
+				"titleNView": {
+					"backgroundColor": "#ffffff"
+				}
+			}
+		},
+		{
+			"path": "pages/setup/setup",
+			"style": {
+				"navigationBarTitleText": "设置",
+				"background": "#FFFFFF",
+				"bounce": "none",
+				"titleNView": {
+					"backgroundColor": "#ffffff"
+				}
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}

@@ -1,0 +1,47 @@
+{
+	"name": "XZH-musicNotification",
+	"id": "XZH-musicNotification",
+	"version": "3.2.2",
+	"description": "Android音乐通知栏",
+	"_dp_type": "nativeplugin",
+	"_dp_nativeplugin": {
+		"android": {
+			"plugins": [{
+				"type": "module",
+				"name": "XZH-musicNotification",
+				"class": "com.xzh.musicnotification.MusicNotificationModule"
+			}],
+			"integrateType": "aar",
+			"compileOptions": {
+				"sourceCompatibility": "1.8",
+				"targetCompatibility": "1.8"
+			},
+			"dependencies": [
+				"androidx.core:core-ktx:1.8.0",
+				"androidx.media:media:1.6.0",
+				"androidx.appcompat:appcompat:1.1.0",
+				"org.jetbrains.kotlin:kotlin-reflect:1.8.0"
+			],
+			"minSdkVersion": "21",
+			"useAndroidX": true,
+            "parameters": {
+                "favour": {
+                    "des": "是否开启收藏按钮",  
+                    "key": "xzh_favour"
+                },
+                "themeColor": {
+                    "des": "widget背景色(请使用 ARGB 格式)",  
+                    "key": "xzh_theme_color"
+                },
+                "titleColor": {
+                    "des": "widget歌名字体色(请使用 ARGB 格式)",  
+                    "key": "xzh_title_color"
+                },
+                "artistColor": {
+                    "des": "widget歌手字体色(请使用 ARGB 格式)",  
+                    "key": "xzh_artist_color"
+                }
+            } 
+		}
+	}
+}
