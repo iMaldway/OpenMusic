@@ -1,9 +1,9 @@
 {
     "name" : "OpenMusic",
     "appid" : "__UNI__E28052C",
-    "description" : "",
-    "versionName" : "1.0.0",
-    "versionCode" : 108,
+    "description" : "音乐无界",
+    "versionName" : "1.0.1",
+    "versionCode" : 109,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
@@ -106,7 +106,7 @@
             "background" : "#f5f5f5",
             "backgroundDark" : "#f5f5f5",
             "bottom" : {
-                "offset" : "none"
+                "offset" : "auto"
             }
         },
         /* 模块配置 */

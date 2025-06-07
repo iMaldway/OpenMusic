@@ -92,6 +92,7 @@
 		left: 0;
 		right: 0;
 		background-color: #fff;
+		overflow-x: hidden;
 		height: 100%;
 
 		&_info {

@@ -3,8 +3,10 @@
 		{
 			"path": "pages/index/index",
 			"style": {
+				"androidThreeButtonNavigationBackgroundColor": "#f5f5f5",
 				"navigationBarTitleText": "",
-				"transparentTitle": "always"
+				"transparentTitle": "always",
+				"background": "#f5f5f5"
 			}
 		},
 		{
@@ -53,7 +55,8 @@
 			"path": "pages/setup/setup",
 			"style": {
 				"navigationBarTitleText": "设置",
-				"background": "#FFFFFF",
+				"androidThreeButtonNavigationBackgroundColor": "#ffffff",
+				"background": "#f5f5f5",
 				"bounce": "none",
 				"titleNView": {
 					"backgroundColor": "#ffffff"
@@ -63,9 +66,10 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarTitleText": "OpenMusic",
+		"navigationBarBackgroundColor": "#f5f5f5",
+		"backgroundColor": "#f5f5f5",
+		"androidThreeButtonNavigationBackgroundColor": "#f5f5f5"
 	},
 	"uniIdRouter": {}
 }

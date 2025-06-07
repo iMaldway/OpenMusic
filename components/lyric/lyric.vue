@@ -82,7 +82,7 @@
 	})
 	// 歌词信息样式
 	const infoStyle = computed(() => {
-		let height = (infoList.value.length * 1 + 2) + 'rem'
+		let height = (infoList.value.length * 1.1 + 2) + 'rem'
 		if (infoList.value.length <= 0) {
 			// 歌词信息样式
 			height = ' 0rem !important'
@@ -93,7 +93,7 @@
 	})
 	// 歌词主体样式
 	const contentStyle = computed(() => {
-		let height = 'calc(100% - ' + ((infoList.value.length * 1) + 2) + 'rem)'
+		let height = 'calc(100% - ' + ((infoList.value.length * 1.1) + 2) + 'rem)'
 		if (infoList.value.length <= 0) {
 			// 歌词主体样式
 			height = ' 100% !important'
@@ -442,6 +442,7 @@
 			// min-height: calc(100% - 3rem);
 			// border-top: 0.2rem solid #666;
 			transition: height 0.5s ease;
+			overflow-x: hidden;
 
 			&_lyric {
 				display: inline-block !important;
