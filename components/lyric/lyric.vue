@@ -1,14 +1,13 @@
 <template>
 	<view class="lrc" :style="SETUP_STYLE">
 		<view class="lrc_info" :style="infoStyle">
-			<view v-for="item in infoList" class="lrc_info_item">
-				<text
-					:class="{'ti':item.tag ==='ti','ar':item.tag ==='ar','al':item.tag ==='al'}">{{ item.value }}</text>
+			<view v-for="item in infoList" :key="item.tag" class="lrc_info_item">
+				<text :class="{'ti':item.tag ==='ti','other':item.tag !='ti'}">{{ item.value }}</text>
 			</view>
 		</view>
 		<view class="lrc_content" id="lrcContentRef" :style="contentStyle">
 			<scroll-view class="lrc_content_lyric" :scroll-y="true" scroll-with-animation :scroll-top="scrollNumber">
-				<view v-for="(item,index) in contentList" id="lrcContentLyricItemActivation"
+				<view v-for="(item,index) in contentList" :key="item.time" id="lrcContentLyricItemActivation"
 					class="lrc_content_lyric_item" :class="{'lrc_content_lyric_item_activation':lyricIndex==index}"
 					:data-text="item.value" :data-time="item.time" @dblclick="selectLyric(item)">
 					{{ item.value }}
@@ -425,15 +424,11 @@
 					top: 0;
 				}
 
-				.ar {
-					font-size: 0.85rem;
+				.other {
+					font-size: 0.8rem;
 					color: #999;
 				}
 
-				.al {
-					font-size: 0.85rem;
-					color: #999;
-				}
 			}
 		}
 
