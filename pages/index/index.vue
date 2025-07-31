@@ -1,104 +1,118 @@
 <template>
-	<view class="content">
-		<uni-row class="content_logo">
-			<uni-col :span="24">OpenMusic | {{ timeState }}</uni-col>
-		</uni-row>
-		<uni-row class="overview">
-			<uni-col :span="6" class="overview_centered">
-				<!-- <view class="iconfont overview_music" @click="openMusicDetails">&#xe601;</view> -->
-				<image mode="widthFix" class="overview_music" @click="openMusicDetails"
-					src="../../static/image/largeLogo.png">
-				</image>
-			</uni-col>
-			<uni-col :span="18" class="overview_projectData">
-				<uni-row class="overview_data">
-					<uni-col :span="24">
-						<view class="overview_number">{{statisticsInfo.song}}</view>
-						<view class="overview_project">song</view>
-					</uni-col>
-				</uni-row>
-				<uni-row class="overview_data">
-					<uni-col :span="24">
-						<view class="overview_number">{{statisticsInfo.singer}}</view>
-						<view class="overview_project">singer</view>
-					</uni-col>
-				</uni-row>
-				<uni-row class="overview_data">
-					<uni-col :span="24">
-						<view class="overview_number">{{statisticsInfo.type}}</view>
-						<view class="overview_project">type</view>
-					</uni-col>
-				</uni-row>
-			</uni-col>
-		</uni-row>
-		<view class="sheet_menu_row">
-			<view class="sheet_menu" @click="playerMod">
-				<view>
-					<uni-icons class="sheet_menu_icon" type="settings" size="20"></uni-icons>
-				</view>
-				<view class="sheet_text">
-					播放设置
-				</view>
-			</view>
-			<view class="sheet_menu" @click="newMusicSong">
-				<view>
-					<uni-icons class="sheet_menu_icon" type="plusempty" size="20"></uni-icons>
-				</view>
-				<view class="sheet_text">
-					新建歌单
-				</view>
-			</view>
-			<view class="sheet_menu" @click="openTiming">
-				<view>
-					<uni-icons class="sheet_menu_icon" type="notification" size="20"></uni-icons>
-				</view>
-				<view class="sheet_text">
-					定时播放
-				</view>
-			</view>
-		</view>
-		<uni-row class="player_show">
-			<uni-col :span="24">
-				<player v-if="isShowPlayer" ref="playerRef" @details="openMusicDetails" :name="playerSongInfo.name"
-					:path="playerSongInfo.path" :parentPath="playerSongInfo.parentPath">
-				</player>
-			</uni-col>
-		</uni-row>
-		<view class="title">本地歌单</view>
-		<view class="sheet">
-			<uni-swipe-action class="sheet_list">
-				<!-- 使用插槽 （请自行给定插槽内容宽度）-->
-				<uni-swipe-action-item v-for="item in musicList">
-					<view class="sheet_item" @click="openMusicList(item)">
-						<uni-icons class="sheet_item_icon icon_file" fontFamily="iconfont"
-							size="20">{{ '&#xe637;' }}</uni-icons>
-						<view class="sheet_item_right">
-							<view class="sheet_item_name">{{item.name}}
-							</view>
-							<view class="sheet_item_path">{{item.path.replace("file:///storage/emulated/0", "")}}
-							</view>
-						</view>
+	<view class="hd_index">
+		<view class="content">
+			<uni-row class="content_logo">
+				<uni-col :span="24">OpenMusic | {{ timeState }} </uni-col>
+			</uni-row>
+			<uni-row class="overview">
+				<uni-col :span="6" class="overview_centered">
+					<!-- <view class="iconfont overview_music" @click="openMusicDetails">&#xe601;</view> -->
+					<image mode="widthFix" class="overview_music" @click="openMusicDetails"
+						src="../../static/image/largeLogo.png">
+					</image>
+				</uni-col>
+				<uni-col :span="18" class="overview_projectData">
+					<uni-row class="overview_data">
+						<uni-col :span="24">
+							<view class="overview_number">{{statisticsInfo.song}}</view>
+							<view class="overview_project">song</view>
+						</uni-col>
+					</uni-row>
+					<uni-row class="overview_data">
+						<uni-col :span="24">
+							<view class="overview_number">{{statisticsInfo.singer}}</view>
+							<view class="overview_project">singer</view>
+						</uni-col>
+					</uni-row>
+					<uni-row class="overview_data">
+						<uni-col :span="24">
+							<view class="overview_number">{{statisticsInfo.type}}</view>
+							<view class="overview_project">type</view>
+						</uni-col>
+					</uni-row>
+				</uni-col>
+			</uni-row>
+			<view class="sheet_menu_row">
+				<view class="sheet_menu" @click="playerMod">
+					<view>
+						<uni-icons class="sheet_menu_icon" type="settings" size="20"></uni-icons>
 					</view>
-					<template v-slot:right>
-						<view class="sheet_item_delete" @click="deleteSheet(item)"><uni-icons type="trash" color="red"
-								size="20"></uni-icons>
+					<view class="sheet_text">
+						播放设置
+					</view>
+				</view>
+				<view class="sheet_menu" @click="newMusicSong">
+					<view>
+						<uni-icons class="sheet_menu_icon" type="plusempty" size="20"></uni-icons>
+					</view>
+					<view class="sheet_text">
+						新建歌单
+					</view>
+				</view>
+				<view class="sheet_menu" @click="openTiming">
+					<view>
+						<uni-icons class="sheet_menu_icon" type="notification" size="20"></uni-icons>
+					</view>
+					<view class="sheet_text">
+						定时播放
+					</view>
+				</view>
+			</view>
+			<uni-row class="player_show">
+				<uni-col :span="24">
+					<player v-if="isShowPlayer" ref="playerRef" @details="openMusicDetails" :name="playerSongInfo.name"
+						:path="playerSongInfo.path" :parentPath="playerSongInfo.parentPath">
+					</player>
+				</uni-col>
+			</uni-row>
+			<view class="title">本地歌单</view>
+			<view class="sheet">
+				<uni-swipe-action class="sheet_list">
+					<!-- 使用插槽 （请自行给定插槽内容宽度）-->
+					<uni-swipe-action-item v-for="item in musicList" :key="item.path">
+						<view class="sheet_item" @click="openMusicList(item)">
+							<uni-icons class="sheet_item_icon icon_file" fontFamily="iconfont"
+								size="20">{{ '&#xe637;' }}</uni-icons>
+							<view class="sheet_item_right">
+								<view class="sheet_item_name">{{item.name}}
+								</view>
+								<view class="sheet_item_path">{{item.path.replace("file:///storage/emulated/0", "")}}
+								</view>
+							</view>
 						</view>
-					</template>
-				</uni-swipe-action-item>
-			</uni-swipe-action>
+						<template v-slot:right>
+							<view class="sheet_item_delete" @click="deleteSheet(item)"><uni-icons type="trash"
+									color="red" size="20"></uni-icons>
+							</view>
+						</template>
+					</uni-swipe-action-item>
+				</uni-swipe-action>
+			</view>
 		</view>
+		<match-media v-if="HDinfo.landscape && HDinfo.matches" :min-width="1200" orientation="landscape"
+			class="hd_lyric">
+			<view class="music_info">
+				<lyric ref="lyricRef" :name="playerSongInfo.name" :path="playerSongInfo.path"
+					@selectLyric="selectLyric">
+				</lyric>
+			</view>
+		</match-media>
 	</view>
+
 </template>
 
 <script setup>
 	import {
 		ref,
 		watch,
-		onMounted
+		onMounted,
+		onBeforeUnmount,
+		getCurrentInstance
 	} from 'vue'
 	import {
 		onShow
 	} from '@dcloudio/uni-app'
+	import lyric from '@/components/lyric/lyric.vue';
 	import player from '@/components/player/player.vue';
 	import OpenFile from '@/components/OpenFile/OpenFile.vue';
 	import {
@@ -122,6 +136,10 @@
 		size: '22',
 		type: 'plusempty'
 	})
+
+	const instance = getCurrentInstance();
+	const that = instance.proxy;
+
 	let playerNote = ref('播放所有歌单内容')
 
 	// 定时状态
@@ -138,13 +156,52 @@
 	let appData = useAppStore().getStoreData
 	// 播放器
 	let playerRef = ref(null)
+	// 歌词组件
+	let lyricRef = ref(null)
 	// 显示播放器
 	let isShowPlayer = ref(true)
 	// 定时器
 	const timerInterval = ref()
+	// 屏幕监听
+	let mediaQueryOb = ref()
+	// 是否是横屏
+	let landscapeOb = ref()
+	//hd
+	let HDinfo = ref({
+		matches: false,
+		landscape: false,
+		mediaQueryOb: null
+	})
 
 	onShow(() => {
 		isShowPlayer.value = true
+	})
+
+	// 监听屏幕方向以及宽度
+	onMounted(() => {
+		mediaQueryOb.value = uni.createMediaQueryObserver(that)
+		landscapeOb.value = uni.createMediaQueryObserver(that)
+		mediaQueryOb.value.observe({
+			minWidth: 1200, //页面最小宽度 1200px
+		}, matches => {
+			HDinfo.value.matches = matches;
+		})
+		console.log("监听")
+		// 是否是横屏
+		landscapeOb.value.observe({
+			orientation: 'landscape' //屏幕方向为纵向
+		}, matches => {
+			HDinfo.value.landscape = matches
+		})
+	})
+
+	onBeforeUnmount(() => {
+		if (mediaQueryOb.value && mediaQueryOb.value !== null && mediaQueryOb.value.disconnect) {
+			mediaQueryOb.disconnect()
+		}
+		if (landscapeOb.value && landscapeOb.value !== null && landscapeOb.value.disconnect) {
+			landscapeOb.disconnect()
+		}
 	})
 
 	// 监听定时播放
@@ -213,6 +270,10 @@
 	}
 	// 打开音乐详情页面
 	const openMusicDetails = () => {
+		// 宽度大于1200并且是横屏不进入详情页
+		if (HDinfo.value.matches && HDinfo.value.landscape) {
+			return
+		}
 		// 清理当前页面的播放器信息
 		uni.navigateTo({
 			url: '/pages/musicDetails/musicDetails',
@@ -301,9 +362,21 @@
 			}
 		});
 	}
+
+	// 监听双击歌词事件
+	const selectLyric = (item) => {
+		if (playerRef && playerRef.value && lyricRef && lyricRef.value) {
+			// 设置时间
+			playerRef.value.setSpeed(item.time)
+			// 同步滚动歌词
+			lyricRef.value.rollLyric()
+		}
+	}
 </script>
 
 <style lang="scss">
+	@import "@/css/music_info.scss";
+
 	.uni-page-body {
 		height: 100% !important;
 		background-color: #f5f5f5;
@@ -326,6 +399,7 @@
 
 		&_logo {
 			width: 100%;
+			height: 2rem;
 			color: #333;
 		}
 	}
@@ -440,7 +514,7 @@
 		background-color: #fff;
 		border-radius: 1rem;
 		border: #fff solid 1rem;
-		height: calc(100% - 26.8rem);
+		height: calc(100% - 27.3rem);
 		overflow: auto;
 
 		&_list {
@@ -571,5 +645,40 @@
 		justify-content: center;
 		align-items: center;
 		align-content: center;
+	}
+
+
+	/* 横屏且宽度至少为 768px 的设备 */
+	@media screen and (orientation: landscape) and (min-width: 1200px) {
+
+		.hd_index {
+			position: absolute;
+			bottom: 0;
+			top: 0;
+			// padding: 1rem;
+			// padding-top: 4rem;
+			height: 100% !important;
+			width: 100%;
+			display: flex;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			align-content: center;
+		}
+
+		.content {
+			position: relative;
+			width: 50%;
+		}
+
+		.music_info {
+			position: relative;
+			width: 100%;
+			overflow-x: hidden;
+			height: 100%;
+			padding-right: 2rem;
+			border-radius: 1rem;
+			background-color: #fff;
+		}
 	}
 </style>

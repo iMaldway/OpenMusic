@@ -1,0 +1,44 @@
+.music {
+	position: absolute;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: #fff;
+	overflow-x: hidden;
+	height: 100%;
+
+	&_info {
+		width: 100%;
+		height: calc(100% - 12rem);
+		padding-left: 2rem;
+		padding-top: 1rem;
+		padding-right: 2rem;
+	}
+
+	&_player {
+		height: 12rem;
+		width: 100%;
+		background-color: #fff;
+		border-radius: 1rem;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		padding-bottom: 2rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: center;
+	}
+}
+@media screen and (orientation: landscape) and (min-width: 1200px) {
+	.hd_lyric{
+		position: relative;
+		width: calc(50%);
+		padding: 2rem;
+		padding-top: 7rem;
+		padding-bottom: 1rem;
+		overflow-x: hidden;
+		height: 100%;
+		// background-color: #fff;
+	}
+}
