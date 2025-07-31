@@ -658,7 +658,7 @@
 			// padding: 1rem;
 			// padding-top: 4rem;
 			height: 100% !important;
-			width: 100%;
+			width: 100% !important;
 			display: flex;
 			display: flex;
 			justify-content: space-around;
