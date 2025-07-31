@@ -6,7 +6,7 @@
 			</view>
 			<view class="setup_info_app">
 				<view>iMaldway</view>
-				<view>Version: 1.0.0</view>
+				<view>Version: 1.1.2</view>
 			</view>
 		</view>
 		<view class="setup_list">
